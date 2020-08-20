@@ -19,6 +19,8 @@ import CreatePost from "./components/CreatePost"
 import ViewSinglePost from "./components/ViewSinglePost"
 import FlashMessages from "./components/FlashMessages"
 import Profile from "./components/Profile"
+import EditPost from "./components/EditPost"
+import NotFound from "./components/NotFound"
 
 function Main() {
   const initialState = {
@@ -70,8 +72,11 @@ function Main() {
             <Route path='/' exact>
               {state.loggedIn ? <Home /> : <HomeGuest />}
             </Route>
-            <Route path='/post/:id'>
+            <Route path='/post/:id' exact>
               <ViewSinglePost />
+            </Route>
+            <Route path='/post/:id/edit' excat>
+              <EditPost />
             </Route>
             <Route path='/profile/:username'>
               <Profile />
@@ -84,6 +89,9 @@ function Main() {
             </Route>
             <Route path='/terms'>
               <Terms />
+            </Route>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
           <Footer />
